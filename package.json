@@ -15,5 +15,8 @@
     "core"
   ],
   "author": "Ivan Malone",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "comedy": "^2.0.0"
+  }
 }
