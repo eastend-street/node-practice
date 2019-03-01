@@ -1,0 +1,19 @@
+{
+  "name": "synapse-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js --testAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@873a8522-c495-433a-9f18-34de946733f6.pub.cloud.scaleway.com:synapse/shell/shell-core.git"
+  },
+  "keywords": [
+    "synapse",
+    "core"
+  ],
+  "author": "Ivan Malone",
+  "license": "ISC"
+}
