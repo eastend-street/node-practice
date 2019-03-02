@@ -1,6 +1,6 @@
 version: "2"
 services:
-  node:
+  application:
     image: "node:8"
     user: "node"
     working_dir: /home/node/app
