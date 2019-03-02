@@ -1,0 +1,9 @@
+{
+"App": 
+  {
+    "mode": "in-memory",
+    "clusterSize": 1,
+    "balancer": "round-robin",
+    "loggerConfiguration": "App.logger"
+  }
+}
