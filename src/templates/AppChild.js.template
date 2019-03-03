@@ -1,5 +1,5 @@
 
-class {App}
+class {AppChild}
 	{
 	initialise(selfActor)
 		{
@@ -8,4 +8,4 @@ class {App}
 	}
 
 
-module.exports = {App}
+module.exports = {AppChild}
