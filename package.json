@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "master": "node index.js",
     "dev": "node index.js",
     "test": "node index.js --testAll"
   },
