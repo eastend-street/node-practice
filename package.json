@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "node": "node_modules/.bin/comedy-node",
     "master": "node index.js",
     "dev": "node index.js",
     "test": "node index.js --testAll"
