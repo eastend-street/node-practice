@@ -11,7 +11,6 @@ class Core
 		{
 		this.config = config;
 		console.clear();
-
 		ActorSystem({
   							loggerConfiguration: ['./logger.json',config.ApplicationActorLoggerConfig]
 		    	    	})
