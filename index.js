@@ -5,6 +5,7 @@ const AppConfig = require(config.ApplicationActorConfig);
 
 var Promise = require('bluebird');
 
+
 class Core
 	{
 	constructor(config)
