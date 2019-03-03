@@ -1,8 +1,9 @@
 {
 "App": 
   {
-    "mode": "in-memory",
+    "mode": "remote",
     "clusterSize": 1,
+    "host": "127.0.0.1",
     "balancer": "round-robin",
     "loggerConfiguration": "App.logger"
   }
