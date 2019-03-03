@@ -1,13 +1,14 @@
 class App
 	{
-	ping(from)
+	initialize(selfActor)
 		{
-		console.log("Ping from: " + from);
-		console.log(process.pid + " will reply");
-		return process.pid;
-		}
-	boot(aParam)
-		{
+		this.selfActor = selfActor;
+		this.oraActor = this.selfActor.createChild('/src/actors/OraActor')
+      			.then(oraActor => {
+				console.log("ora made");
+				oraActor.send("testOra","testMsg");
+				return oraActor;
+      				});
 		}
 	}
 

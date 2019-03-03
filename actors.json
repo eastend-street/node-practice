@@ -1,9 +1,13 @@
 {
 "App": 
   {
-    "mode": "remote",
+    "mode": "in-memory",
     "clusterSize": 1,
     "host": "nixtop",
     "balancer": "round-robin"
-  }
+  },
+"OraActor":
+	{
+	"mode": "in-memory"
+	}
 }
