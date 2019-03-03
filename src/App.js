@@ -1,8 +1,9 @@
 class App
 	{
-	test(msg)
+	ping(from)
 		{
-		console.log(msg);
+		console.log("Ping from: " + from);
+		return process.pid;
 		}
 	boot(aParam)
 		{
