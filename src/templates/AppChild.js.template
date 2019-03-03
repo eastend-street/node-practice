@@ -1,0 +1,11 @@
+
+class {App}
+	{
+	initialise(selfActor)
+		{
+		this.self = selfActor;
+		}
+	}
+
+
+module.exports = {App}
