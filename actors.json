@@ -1,7 +1,7 @@
 {
 "App": 
   {
-    "mode": "remote",
+    "mode": "in-memory",
     "clusterSize": 1,
     "host": "127.0.0.1",
     "balancer": "round-robin"
