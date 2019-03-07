@@ -3,12 +3,13 @@ class App
 	initialize(selfActor)
 		{
 		this.selfActor = selfActor;
-		this.oraActor = this.selfActor.createChild('/src/actors/OraActor')
+		this.selfActor.createChild('/src/actors/OraActor')
       			.then(oraActor => {
-				console.log("ora made");
-				oraActor.send("testOra","testMsg");
+				oraActor.send("startOra","Welcome");
+				this.oraActor = oraActor;
 				return oraActor;
       				});
+		this.oraActor.send("setText",":-->|");
 		}
 	}
 

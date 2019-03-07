@@ -22,6 +22,7 @@
   "dependencies": {
     "bluebird": "^3.5.3",
     "comedy": "^2.0.0",
-    "ora": "^3.2.0"
+    "ora": "^3.2.0",
+    "synaptic": "^1.1.4"
   }
 }
