@@ -7,7 +7,11 @@ class OraActor
 		this.selfActor = selfActor;
 		this.ora = require('ora');
 		this.spinner = this.startOra('');
-		this.selfActor.createChild('/src/actors/SynapticActor',this.spinner);
+		this.synapticActor = this.RegisterActor('SynapticActor');
+		for (var i = 0; i < 10; i++)
+			{
+			console.log(i)
+			}
 		}
 	startOra(startMessage)
 		{
@@ -21,6 +25,16 @@ class OraActor
 		{
 		this.spinner.Stop();
 		}
+
+	 RegisterActor(actorName)
+                {
+                console.log("RegisterActor: " + actorName)
+                return this.selfActor.createChild('/src/actors/' + actorName)
+                        .then(theActor => {
+                                          return theActor;
+                                          });
+                }
+
 	}
 
 

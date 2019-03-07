@@ -2,14 +2,22 @@ class App
 	{
 	initialize(selfActor)
 		{
+		const dependsOn = ['OraActor','SynapticActor']
 		this.selfActor = selfActor;
-		this.selfActor.createChild('/src/actors/OraActor')
-      			.then(oraActor => {
-				oraActor.send("startOra","");
-				oraActor = oraActor;
-				return oraActor;
-      				});
+		this.actors = []
+		for (var i = 0; i < dependsOn.length; i++)
+			{
+			this.actors.push(this.RegisterActor(dependsOn[i]));
+			}
+		}
 
+	RegisterActor(actorName)
+		{
+		console.log("RegisterActor: " + actorName)
+		return this.selfActor.createChild('/src/actors/' + actorName)
+			.then(theActor => {
+					  return theActor;
+					  });
 		}
 	}
 
