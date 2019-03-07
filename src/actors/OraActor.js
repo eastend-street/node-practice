@@ -15,6 +15,10 @@ class OraActor
 		{
 		return this.ora(startMessage).start();
 		}
+	stopOra(stopMessage)
+		{
+
+		}
 	}
 
 
