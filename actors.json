@@ -9,5 +9,9 @@
 "OraActor":
 	{
 	"mode": "in-memory"
+	},
+"SynapticActor":
+	{
+	"mode": "in-memory"
 	}
 }

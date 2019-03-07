@@ -4,10 +4,10 @@ class OraActor
 	{
 	initialize(selfActor)
 		{
-		console.clear();
 		this.selfActor = selfActor;
 		this.ora = require('ora');
 		this.spinner = this.startOra('');
+		this.selfActor.createChild('/src/actors/SynapticActor',this.spinner);
 		}
 	startOra(startMessage)
 		{
@@ -15,11 +15,11 @@ class OraActor
 		}
 	setText(toText)
 		{
-		this.ora.text = toText;
+		this.spinner.text = toText;
 		}
 	stopOra(stopMessage)
 		{
-
+		this.spinner.Stop();
 		}
 	}
 
