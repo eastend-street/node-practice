@@ -26,3 +26,4 @@ class Core
 	}}
 
 const core = new Core(config);
+console.log('test')

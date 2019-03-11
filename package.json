@@ -20,6 +20,7 @@
   "author": "Ivan Malone",
   "license": "ISC",
   "dependencies": {
+    "axel": "0.0.3",
     "bluebird": "^3.5.3",
     "brain.js": "^1.6.1",
     "comedy": "^2.0.0",

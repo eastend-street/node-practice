@@ -8,10 +8,6 @@ class OraActor
 		this.ora = require('ora');
 		this.spinner = this.startOra('');
 		this.synapticActor = this.RegisterActor('SynapticActor');
-		for (var i = 0; i < 10; i++)
-			{
-			console.log(i)
-			}
 		}
 	startOra(startMessage)
 		{
