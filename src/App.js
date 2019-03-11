@@ -2,14 +2,10 @@ class App
 	{
 	initialize(selfActor)
 		{
-		const dependsOn = ['OraActor','SynapticActor', 'ExpressActor']
+		const dependsOn = ['ExpressActor', 'OraActor', 'AxelActor']
 		this.selfActor = selfActor;
 		this.actors = []
 		let os = require('os');
-		for (var i = 0; i < dependsOn.length; i++)
-			{
-			this.RegisterActor(dependsOn[i]);
-			}
 		this.oraData = {}
 		this.oraData.text = os.hostname();
 		this.oraData.color = 'green'
@@ -24,16 +20,24 @@ class App
 		const username = require('username');
 		this.usr = username.sync();
 		this.oraData.text = this.usr + '@' + this.oraData.text + ":"
+
+
+		for (var i = 0; i < dependsOn.length; i++)
+                        {
+                        this.RegisterActor(dependsOn[i]);
+                        }
+
 		}
 
 
 	RegisterActor(actorName)
 		{
-		return this.selfActor.createChild('/src/actors/' + actorName)
+		var child = this.selfActor.createChild('/src/actors/' + actorName)
 			.then(theActor => {
 					  this.actors.push(theActor);
-					  return theActor;
+					  //return theActor;
 					  });
+		return child;
 		}
 
 
@@ -41,6 +45,7 @@ class App
 		{
 		for (var i = 0; i < this.actors.length; i++)
 			{
+			console.log(this.actors[i].actor.name)
 			switch (this.actors[i].actor.name) 
 				{
 				case 'App': 

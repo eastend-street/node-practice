@@ -21,6 +21,7 @@ class Core
 			.then(rootActor =>
 					{
 					console.log("Loading Application Actor: " + this.config.ApplicationActor,this.AppConfig)
+					this.rootActor = rootActor;
 					return rootActor.createChild(this.config.ApplicationActor, this.AppConfig);
 					})
 			.then(appActor =>

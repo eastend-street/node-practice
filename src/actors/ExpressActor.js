@@ -11,10 +11,17 @@ class ExpressActor
 		this.server = express();
 
 		this.server.use(express.static('public'))
-		this.startServer(3000)
+		this.server.listen(3000, function () 
+					{
+   					var host = server.address().address
+   					var port = server.address().port
+					console.log("Example app listening at http://%s:%s", host, port)
+					})
+
 		}
 	startServer(port)
 		{
+		console.log('test')
 		this.server.listen(port)
 		}
 	stopServer()
@@ -24,11 +31,11 @@ class ExpressActor
 
 	update(data)
 		{
-		console.log(data)
+		//console.log(data)
 		}
 
 	}
 
 
 
-module.expores = ExpressActor
+module.exports = ExpressActor
