@@ -2,23 +2,62 @@ class App
 	{
 	initialize(selfActor)
 		{
-		const dependsOn = ['OraActor','SynapticActor']
+		const dependsOn = ['OraActor','SynapticActor', 'ExpressActor']
 		this.selfActor = selfActor;
 		this.actors = []
+		let os = require('os');
 		for (var i = 0; i < dependsOn.length; i++)
 			{
-			this.actors.push(this.RegisterActor(dependsOn[i]));
+			this.RegisterActor(dependsOn[i]);
 			}
-		console.log(this.actors)
+		this.oraData = {}
+		this.oraData.text = os.hostname();
+		this.oraData.color = 'green'
+		this.oraData.hideCursor = false;
+		this.oraData.indent = 0;
+		this.oraData.spinner = 'circleQuarters'
+		this.oraData.txtLevel = 0;
+		this.axelData = {}
+		this.axelData.clear = true;
 		}
+
 
 	RegisterActor(actorName)
 		{
-		console.log("RegisterActor: " + actorName)
 		return this.selfActor.createChild('/src/actors/' + actorName)
 			.then(theActor => {
+					  this.actors.push(theActor);
 					  return theActor;
 					  });
+		}
+
+
+	updateApplication()
+		{
+		for (var i = 0; i < this.actors.length; i++)
+			{
+			switch (this.actors[i].actor.name) 
+				{
+				case 'App': 
+					break;
+				case 'Object': 
+					break;
+  				case 'OraActor':
+					this.actors[i].actor.send('update',this.oraData)
+    					break;
+  				case 'SynapticActor':
+					break;
+  				case 'AxelActor':
+					this.actors[i].actor.send('update', this.axelData)
+    					break;
+				case 'ExpressActor':
+					this.actors[i].actor.send('update','');
+					break;
+  				default:
+					this.actors[i].actor.send('update', '');
+					break;
+				}
+			}
 		}
 	}
 

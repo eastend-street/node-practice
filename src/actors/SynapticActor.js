@@ -25,6 +25,11 @@ class SynapticActor
 		this.Trainer = new Trainer(this.SelfPerception);
 		this.Trainer.XOR();
 		}
+
+	update()
+		{
+		console.log('syn update');
+		}
 	}
 
 

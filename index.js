@@ -1,29 +1,45 @@
 'use strict';
-const ActorSystem = require('comedy');
-const config = require('./cfg/config');
-const AppConfig = require(config.ApplicationActorConfig);
 
-
-
-var Promise = require('bluebird');
 
 
 class Core
 	{
-	constructor(config)
+	constructor()
 		{
-		this.config = config;
-		console.clear();
-		ActorSystem({
-  				loggerConfiguration: ['./logger.json',config.ApplicationActorLoggerConfig]
-		    	    })
+		this.ActorSystem = require('comedy');
+		this.config = require('./cfg/config');
+		this.AppConfig = require(this.config.ApplicationActorConfig);
+		this.Promise = require('bluebird');
+
+		this.ActorSystem
+			(
+				{
+  				loggerConfiguration: ['./logger.json',this.config.ApplicationActorLoggerConfig]
+		    		}
+			)
 			.rootActor()
 			.then(rootActor =>
 					{
-					console.log("Loading Application Actor: " + config.ApplicationActor,AppConfig)
-					return rootActor.createChild(config.ApplicationActor, AppConfig);
+					console.log("Loading Application Actor: " + this.config.ApplicationActor,this.AppConfig)
+					return rootActor.createChild(this.config.ApplicationActor, this.AppConfig);
 					})
-	}}
+			.then(appActor =>
+					{
+					this.appActor = appActor;
+					console.log("Loaded Application Actor: " + this.appActor)
+					this.startMainLoop(this.appActor);
+					})
+		}
+	startMainLoop(appActor)
+		{
+		setInterval(this.doUpdate, this.config.ApplicationActorUpdateInterval, appActor);
+		}
 
-const core = new Core(config);
-console.log('test')
+	doUpdate(appActor)
+		{
+		appActor.send('updateApplication');
+		}
+	}
+	
+
+const core = new Core();

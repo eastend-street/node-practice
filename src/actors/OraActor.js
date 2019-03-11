@@ -6,8 +6,7 @@ class OraActor
 		{
 		this.selfActor = selfActor;
 		this.ora = require('ora');
-		this.spinner = this.startOra('');
-		this.synapticActor = this.RegisterActor('SynapticActor');
+		this.spinner = this.startOra();
 		}
 	startOra(startMessage)
 		{
@@ -17,19 +16,30 @@ class OraActor
 		{
 		this.spinner.text = toText;
 		}
+	setColor(toColor)
+		{
+		this.spinner.color = toColor;
+		}
 	stopOra(stopMessage)
 		{
 		this.spinner.Stop();
 		}
 
-	 RegisterActor(actorName)
-                {
-                console.log("RegisterActor: " + actorName)
-                return this.selfActor.createChild('/src/actors/' + actorName)
-                        .then(theActor => {
-                                          return theActor;
-                                          });
-                }
+	update(oraData)
+		{
+		this.setColor(oraData.color);
+		this.spinner.spinner = oraData.spinner;
+		this.spinner.hideCursor = oraData.hideCursor;
+		this.spinner.indent = oraData.indent;
+		if (oraData.txtLevel === 0)
+			{
+			this.setText(oraData.text);
+			}
+		else if (oraData.txtLevel === 1)
+			{
+			this.spinner.warn(oraData.text);
+			}
+		}
 
 	}
 

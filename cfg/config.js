@@ -8,4 +8,6 @@ config.ApplicationActorLoggerConfig = "./src/App.logger";
 // NOTE: Back to actor path notation here for comedy
 config.ActorRootPath = "/src/actors";
 // NOTE: Comedy paths will use '/' notation, while other paths will use './'
+// NOTE: UpdateInterval will determine how of often app update will be polled in index.js
+config.ApplicationActorUpdateInterval = 1000
 module.exports = config;
