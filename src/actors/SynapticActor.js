@@ -16,6 +16,14 @@ class SynapticActor
 		this.Network = this.synaptic.Network,
 		this.Trainer = this.synaptic.Trainer,
 		this.Architect = this.synaptic.Architect;
+
+		this.SelfPerception = new Perception(2,3,1); 
+		this.trainNetwork()
+		}
+	trainNetwork()
+		{
+		this.Trainer = new Trainer(this.SelfPerception);
+		this.Trainer.XOR();
 		}
 	}
 

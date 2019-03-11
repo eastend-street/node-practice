@@ -9,6 +9,7 @@ class App
 			{
 			this.actors.push(this.RegisterActor(dependsOn[i]));
 			}
+		console.log(this.actors)
 		}
 
 	RegisterActor(actorName)
