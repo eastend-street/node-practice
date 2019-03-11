@@ -19,6 +19,11 @@ class App
 		this.oraData.txtLevel = 0;
 		this.axelData = {}
 		this.axelData.clear = true;
+
+
+		const username = require('username');
+		this.usr = username.sync();
+		this.oraData.text = this.usr + '@' + this.oraData.text + ":"
 		}
 
 
