@@ -1,11 +1,280 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+<style>
+.cell {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 5px;
+}
+</style>
+  </head>
+  <body id="mainArea"> </body>
+<footer>
+  <div>
+      <button class='button' onclick='startGame()'>Start</button>
+      <button onclick='stopGame()'>Stop</button>
+      <button>Next</button>
+      <button onclick='clearArea()'>Clear</button>
+      <button onclick='randomizeArea() '>Randomize</button>
+      <button id='generationCount'>Generations: 0 </button>
+  </div>
+  <div>
+    <input value=1000 id='interval'>interval</input>
+    <input value=50 id='density'>Random Density</input>
+  </div>
+  <div>
+    <input value=15 id='totalRows'>Row Count</input>
+    <input value=25 id='totalCols'>Col Count</input>
+    <button onclick='resetAll() '>Redraw</button>
+  </div>
+</footer>
+<script>
+
+  var emptyCell = "<button class=/'.cell/'>░</button>";
+  var liveCell = "<button ▉class=/'.cell/'>█</button>";
+
+    var rowTotal = document.getElementById('totalRows').value;
+    var colTotal = document.getElementById('totalCols').value;
+
+    var gameIsRunning = false;
+    var firstStart = true;
 
 
-<body>
 
-<button>button</button>
-</body>
+    function redraw()
+    {
+      resetAll()
+    }
+
+  function setInitialState(rows, cols)
+    {
+    for (var i = 0; i < rows; i++)
+        {
+          for (var j = 0; j < cols; j++)
+            {
+            setCellAt(i,j,emptyCell);
+            }
+        }
+    }
+
+  function getRandomInt(max)
+    {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    function startGame()
+      {
+      console.log('Starting New Game')
+      var interval = document.getElementById('interval').value;
+
+
+      if (gameIsRunning === false)
+        {
+          if (firstStart === true)
+            {
+                setInterval('updateGame()', interval);
+                firstStart = false;
+            }
+
+        gameIsRunning = true;
+        }
+      else {
+          gameIsRunning = true;
+          }
 
 
 
+      }
+
+    function stopGame()
+      {
+      gameIsRunning = false;
+      }
+
+
+
+
+    function updateGame()
+      {
+      //var ctx = document.getElementById('mainArea');
+
+      //console.log(ctx)
+      if (gameIsRunning === true)
+        {
+        for (var x = 0; x < rowTotal; x++)
+            {
+            for (var y = 0; y < colTotal; y++)
+              {
+              var cell = getCellAt(x,y)
+
+              // do we have a live cell?
+              if (cell === liveCell)
+                {
+
+                if (countNeighbours(x,y) < 2)
+                    {//Any live cell with fewer than two live neighbours dies, as if by underpopulation.
+
+                    console.log(x + ', ' + y + ' dies because of underpopulation')
+                    }
+                  else if ((countNeighbours(x,y) === 2) || (countNeighbours() === 3))
+                    {//Any live cell with two or three live neighbours lives on to the next generation.
+
+                    console.log(x + ', ' + y + ' lives on as normal')
+                    }
+                  else if (countNeighbours(x,y) > 3)
+                    {  //Any live cell with more than three live neighbours dies, as if by overpopulation.
+
+                    console.log(x + ', ' + y + ' dies due to over population')
+                    }
+                  }
+                else if (cell === emptyCell)
+                  {
+                    //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+                    if (countNeighbours(x,y) === 3)
+                      {
+                      console.log(x + ', ' + y + ' reborn due to right conditions')
+                      }
+                  }
+                }
+              }
+            }
+
+
+        }
+
+
+
+
+
+  function randomizeArea()
+    {
+      var density = document.getElementById('density').value
+    for (var x = 0; x < rowTotal; x++)
+        {
+          for (var y = 0; y < colTotal; y++)
+            {
+            var randomNumber = getRandomInt(100);
+            if (randomNumber > density)
+                {
+                setCellAt(x,y,emptyCell)
+                }
+            else {
+                 setCellAt(x,y,liveCell)
+                }
+            }
+        }
+    }
+
+  function clearArea()
+    {
+    for (var x = 0; x < rowTotal; x++)
+      {
+        for (var y = 0; y < colTotal; y++)
+          {
+          setCellAt(x,y,emptyCell)
+          }
+      }
+    }
+
+
+  function countNeighbours(x,y)
+      {
+      var count = 0;
+
+
+          if (getCellAt(x-1,y) === liveCell) count++;
+          if (getCellAt(x+1,y) === liveCell) count++;
+          if (getCellAt(x,y+1) === liveCell) count++;
+          if (getCellAt(x,y-1) === liveCell) count++;
+          return count;
+
+
+
+
+      }
+
+
+  function resetAll()
+    {
+
+      document.getElementById('mainArea').insertAdjacentHTML('beforeend',GenerateGameArea(rowTotal,colTotal));
+      setInitialState(rowTotal,colTotal)
+    }
+
+  function getCellAt(aRow, aCol)
+    {
+    var aCell = document.getElementById("col" + aRow + "-" + aCol)
+    if (aCell != null)
+      {
+          return aCell.innerHTML;
+      }
+
+    }
+
+   function setCellAt(aRow, aCol, value)
+      {
+      var aCell = document.getElementById("col" + aRow + "-" + aCol)
+      aCell.innerHTML = value;
+      document.getElementById("col" + aRow + "-" + aCol).innerHTML = aCell.innerHTML
+      }
+
+  function handleCellClick(x,y)
+    {
+      if (getCellAt(x,y) === emptyCell)
+        {
+        setCellAt(x,y,liveCell)
+        }
+      else
+        {
+        setCellAt(x,y,emptyCell)
+        }
+      countNeighbours(x,y)
+    }
+
+
+    function GenerateGameArea(numberOfRows, numberOfColumns)
+      {
+        // NOTE: Pay special attention to the use of \n \' and \t in construct
+        // we make an empty variable
+      var temp = ""
+      // we begin our table
+      temp = temp + "<table>\n"
+        // we start looping through and creating each row, inside each row we will create the cols
+        for (var aRow = 0; aRow < numberOfRows; aRow++)
+          {// begin a row
+          temp = temp + "\t<tr id=\'row" + aRow + "\'>\n"
+
+            // begin constructoring the cols
+            for (var aCol = 0; aCol < numberOfColumns; aCol++)
+              {
+                // open col
+              var textToInsert = " onclick=\"handleCellClick(" + aRow + "," + aCol + ") \""
+              temp = temp + "\t\t<th" + textToInsert + "id=\'col" + aRow + "-" + aCol + "\'>\n"
+
+              temp = temp + emptyCell;
+              // close col
+              temp = temp + "\t\t</th>\n"
+              }
+            // close row
+          temp = temp + "\t</tr>\n"
+          }
+      // close table
+      temp = temp + "</table>\n"
+      return temp;
+      }
+
+resetAll()
+
+
+</script>
+
+  </body>
 </html>
