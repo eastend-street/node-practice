@@ -26,7 +26,7 @@ class SynapticActor
 		this.Trainer.XOR();
 		}
 
-	update()
+	update(data)
 		{
 		console.log('syn update');
 		}
