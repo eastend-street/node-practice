@@ -2,7 +2,7 @@ class App
 	{
 	initialize(selfActor)
 		{
-		const dependsOn = ['ExpressActor','OraActor','AxelActor','SynapticActor','MongoDBActor']
+		const dependsOn = ['ExpressActor','OraActor','AxelActor','SynapticActor','MongoDBActor', 'CasandraDBActor']
 		this.selfActor = selfActor;
 		this.actors = []
 		let os = require('os');

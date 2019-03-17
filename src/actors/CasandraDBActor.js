@@ -5,25 +5,15 @@ class CasandraDBActor
 	initialize(selfActor)
 		{
 		this.self = selfActor;
-		this.mongodb = require('mongodb').MongoClient;
-		this.url = "mongodb://database:27017/" + this.name;
-
-		this.mongodb.connect(this.url, function(err,db)
-			{
-			if (err) throw err;
-			console.log("Database Actor created!");
-			db.close();
-			});
+		this.cassandra = require('cassandra-driver');
+		this.async = require('async');
+		this.endpoint = {contactPoints: ['127.0.0.1'], keyspace: 'demo'}
+		this.client = new this.cassandra.Client(this.endpoint);
+		
 		}
 
 	update(data)
 		{
-		this.mongodb.connect(this.url, function(err,db)
-                        {
-                        if (err) throw err;
-                        console.log("Database Actor Updated!");
-                        db.close();
-                        });
 
 		}
 
