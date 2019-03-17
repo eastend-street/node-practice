@@ -1,2 +1,4 @@
 #!/bin/sh
-npm run master
+docker build .
+cd Docker
+docker-compose up 
