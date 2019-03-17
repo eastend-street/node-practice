@@ -26,6 +26,7 @@
     "chalk": "^2.4.2",
     "comedy": "^2.0.0",
     "express": "^4.16.4",
+    "mongodb": "^3.1.13",
     "ora": "^3.2.0",
     "synaptic": "^1.1.4",
     "username": "^4.1.0"
