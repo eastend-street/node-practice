@@ -1,6 +1,5 @@
 version: "2"
 services:
-
   database:
     image: 'bitnami/mongodb:3.6'
     labels:
@@ -24,3 +23,9 @@ services:
     ports:
       - "3000:3000"
     command: "npm run master"
+
+volumes:
+  mongodb_data:
+    driver: local
+
+
