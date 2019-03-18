@@ -68,6 +68,7 @@ class App
 					this.actors[i].actor.send('update',' ');
 					break;
   				default:
+					console.log("Default Handler for " + this.actors[i].actor.name)
 					this.actors[i].actor.send('update', ' ');
 					break;
 				}
