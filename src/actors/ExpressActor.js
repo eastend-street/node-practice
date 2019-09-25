@@ -7,7 +7,7 @@ class ExpressActor
 		this.self = selfActor;
 		this.express = require('express');
 		this.server = this.express();
-		this.port = 6000;
+		this.port = 3000;
 		this.setupExpressRoutes();
 		this.startServer(this.port);
 		this.os = require('os');
@@ -23,10 +23,12 @@ class ExpressActor
 	setupExpressRoutes()
 		{
 		this.server.use(this.express.static('public'))
-
-		this.server.get('/api', function (req, res) {
- 				 res.send("API Version 0")})
-	}
+		this.server.get('/api/*', function (req, res) 
+				{
+				console.log("Recieved 'Get' request for resource: " + req.url + " from HOST: " + req.get('host'));
+ 				res.send("{hello:world}");
+				})
+		}
 
 	startServer(port)
 		{
