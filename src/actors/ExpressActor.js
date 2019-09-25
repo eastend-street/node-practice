@@ -7,29 +7,32 @@ class ExpressActor
 		this.self = selfActor;
 		this.express = require('express');
 		this.server = this.express();
-		this.port = 3000;
-	
+		this.port = 6000;
 		this.setupExpressRoutes();
 		this.startServer(this.port);
 		}
 
 	returnData()
 		{
-		return {
+		return  {
 			port: this.port
 			}
 		}
 
 	setupExpressRoutes()
 		{
-		this.server.use(this.express.static('public'))
+		this.server.use(this.express.static('../../public'))
+
+		this.server.get('/api', function (req, res) {
+ 				 res.send('You found the api!')
+			})
 		}
 
 	startServer(port)
 		{
-		this.server.listen(this.port, function ()
+		this.server.listen(port, function ()
                                         {
-                                        console.log("Example app listening at http://yourdomain:" + this.port)
+                                        console.log("Server is Listening")
                                         })
 
 		}
@@ -40,7 +43,7 @@ class ExpressActor
 
 	update(data)
 		{
-		console.log(data)
+//		console.log(this.server)
 		}
 
 	}

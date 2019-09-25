@@ -8,7 +8,7 @@ class App
 		// I specify what actors I want to load here, this array will be parsed later and loaded
 		// automaticly later, its easier to load the actors this way and more reliable to do it 
 		// programitcly than to write the boiler plate each time. 
-		const dependsOn = ['ExpressActor','OraActor', 'AxelActor']
+		const dependsOn = ['ExpressActor','OraActor']
 
 		// I make an empty array here, loaded actors will be pushed in here so I have a reference
 		// to them.
@@ -31,8 +31,8 @@ class App
 		this.oraData.txtLevel = 0;
 
 		// Axel allows me to control graphics to the console
-		this.axelData = {}
-		this.axelData.clear = true;
+		//		this.axelData = {}
+		//		this.axelData.clear = true;
 
 		// I sync some handy variables I wanna keep for later
 		this.usr = username.sync();
@@ -101,7 +101,7 @@ class App
 					this.actors[i].actor.send('update',' ');
 					break;
   				default:
-					console.log("Default Handler for " + this.actors[i].actor.name)
+//					console.log("Default Handler for " + this.actors[i].actor.name)
 					this.actors[i].actor.send('update', ' ');
 					break;
 				}
