@@ -7,7 +7,7 @@ class CasandraDBActor {
     this.client = new this.cassandra.Client(this.endpoint);
   }
 
-  update(data) {}s
+  update(data) {}
 }
 
 module.exports = CasandraDBActor;

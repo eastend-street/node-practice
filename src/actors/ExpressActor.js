@@ -27,16 +27,16 @@ class ExpressActor {
           req.get("host")
       );
       res.send("{hello:world}");
-	});
-	this.server.get("/users", function(req, res) {
-		console.log(
-		  "Recieved 'Get' request for resource: " +
-			req.url +
-			" from HOST: " +
-			req.get("host")
-		);
-		res.send("Hello User");
-	  });
+    });
+    this.server.get("/users", function(req, res) {
+      console.log(
+        "Recieved 'Get' request for resource: " +
+          req.url +
+          " from HOST: " +
+          req.get("host")
+      );
+      res.send("Hello User");
+    });
   }
 
   startServer(port) {
