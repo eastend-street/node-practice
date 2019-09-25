@@ -21,7 +21,7 @@ class ExpressActor
 
 	setupExpressRoutes()
 		{
-		this.server.use(this.express.static('../../public'))
+		this.server.use(this.express.static('public'))
 
 		this.server.get('/api', function (req, res) {
  				 res.send('You found the api!')
