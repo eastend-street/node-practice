@@ -10,6 +10,7 @@ class ExpressActor
 		this.port = 6000;
 		this.setupExpressRoutes();
 		this.startServer(this.port);
+		this.os = require('os');
 		}
 
 	returnData()
@@ -24,9 +25,8 @@ class ExpressActor
 		this.server.use(this.express.static('public'))
 
 		this.server.get('/api', function (req, res) {
- 				 res.send('You found the api!')
-			})
-		}
+ 				 res.send("API Version 0")})
+	}
 
 	startServer(port)
 		{

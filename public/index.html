@@ -1,22 +1,238 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html>
+    <!--Set up some debugging once we start processing the HTML-->
+    <script>   
+       clearConsole();
+       console.group("HTML Section");
+       startTimer("pageload-html");  
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Sonder</title>
-  </head>
-  <body>
-    <h1>You found the web page!</h1>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+       class DebugInfo
+            {
+                constructor()
+                {                                 
+                this.htmlTime = 0;
+                this.headTime = 0;
+                this.bodyTime = 0;     
+                this.footerTime = 0;                      
+                }                
+            }
+
+        let debugInfo = new DebugInfo();
+
+        function clearConsole()
+		{
+	        console.clear();
+        	}
+
+        function startTimer(group)
+	        {
+	        return console.time(group);
+	        }
+
+        function endTimer(group)
+	        {
+	        return console.timeEnd(group);
+	        }                 
+    </script>
+
+	    <head>
+ 	        <script>
+			console.group("HEAD SECTION");
+			startTimer("pageload-head");
+		</script>
+        
+		<title>Sonder</title>
+       
+	        <base href="https://www.sonder.network/" target="_blank">
+      
+		<style>
+        
+        	</style>
+        
+            
+		<noscript>
+			Your browser doesn't support JavaScript or it is diabled, at this time - Sonder requires JavaScript and a HTML5/CSS3 compatible browser. 
+     		</noscript>
+        
+
+        	<meta charset="UTF-8">
+        
+
+		<meta name="keywords"
+                	    content="Sonder,Sonder Network, Sonder Search, Search">
+                       
+		<meta name="description" 
+		            content="Sonder Search is named after 'Sonder:' Defination - it is the profound feeling of realizing that everyone, including strangers passed in the street, has a life as complex as one's own, which they are constantly living despite one's personal lack of awareness of it.">
+
+
+		<meta name="author" 
+		            content="Ivan Malone (ivan.m@wsad.io)">
+
+
+		<meta name="generator" 
+		            content="Hand Coded with love">
+
+
+		<meta name="application-name" 
+		            content="Sonder.network">
+
+
+		<meta name="viewport" 
+		            content="width=device-width, height=device-height, initial-scale=1.0">
+
+
+	        <script>
+			debugInfo.headTime = endTimer("pageload-head");
+			console.groupEnd("HEAD Section");
+	       </script>    	
+
+
+	    </head>
+
+
+    <body onload="onPageLoad()" onunload="onPageUnLoad()" onpagehide="onPageHide()" onpageshow="onPageShow()" onfocus="onPageFocus()" onblur="onPageBlur()" 
+          oncopy="onCopyEvent()" oncut="onCutEvent()" onpaste="onPasteEvent()"
+          onkeypress="onKeyPressEvent()" onkeydown="onKeyDownEvent()" onkeyup="onKeyUpEvent()" >
+
+	    <script>
+        	console.group("BODY Section");
+	        startTimer("pageload-body");
+	    </script>
+
+          
+		<h1> Welcome to our Test Page, if you see this GREAT! </h1>
+		<p> Make sure that you are also viewing your 'Developer Console' </p>
+		<a href="http://51.158.97.45:6000/api">Visit API Route</a>
+
+        
+	    <script>
+                debugInfo.bodyTime = endTimer("pageload-body");
+                console.groupEnd("BODY Section");
+	   </script>
+
+   </body>
+
+   <footer>
+
+
+    <!--Set up some debugging once we end processing the HTML-->
+    <script>
+	console.group("FOOTER SECTION");
+	startTimer("pageload-footer");
+
+        function onContextMenuEvent()
+	        {     
+	        console.log("onContextMenuEvent")
+	        }
+
+        function onKeyDownEvent()
+	        {     
+	        console.log("onKeyDownEvent")
+	        }  
+        function onKeyUpEvent()
+        	{
+                 console.log("onKeyUpEvent")
+     		}
+        
+        function onKeyPressEvent()
+	        {     
+	    	console.log("onKeyPressEvent")
+        	}
+
+        function onCopyEvent()
+        	{     
+	        console.log("copy")
+        	}
+
+        function onPasteEvent()
+	        {      
+		console.log("paste")
+	        }
+
+        function onCutEvent()
+        	{
+	        console.log("cut")
+        	}
+        
+        function onPageLoad()
+	        {
+                console.log("Page is loaded");
+         	}
+
+        function onPageUnLoad()
+	        {
+                console.log("Page is Un-loaded");
+                }
+
+        function onPageShow()
+	        {
+         	console.log("Page is Showing")
+	        }
+
+        function onPageHide()
+		{	
+	        console.log("Page is hiding")
+            	}
+
+	function onPageFocus()
+        	{
+	        console.log("Page has Focus")
+	     	}
+
+        function onPageBlur()
+	        {
+        	console.log("Page lost focus")
+	        }
+
+        function onBeforePageFocus()
+        	{
+	        console.log("Page is about to gain focus")
+	        }
+       function onBeforePageBlur()
+            	{
+            	console.log("Page about to lose focus")
+            	}          
+
+	debugInfo.footerTime = endTimer("pageload-footer");
+
+        console.groupEnd("FOOTER Section");
+	</script>          
+	</footer>
+
+
+	<script>
+        debugInfo.htmlTime = endTimer("pageload-html");    
+	console.groupEnd("HTML Section");    
+
+    	console.group("Debug Information");
+		console.group("Page Information");
+		    console.log("Page Loaded: " + location.href + " with parms: " + location.search);                                      
+		    console.log("Language: " + navigator.language);
+		    console.log("Cookies Enabled: " + navigator.cookieEnabled);
+		    console.log("Platform: " + navigator.platform + "(" + navigator.product + ")");
+		    console.log(navigator.appCodeName + "(" + navigator.appName + ") " + navigator.appVersion);      
+		    console.log("UserAgent: " + navigator.userAgent);
+		    console.log("JavaEnabled: " + navigator.javaEnabled());
+		    console.log("Is Online: " + navigator.onLine);
+		console.groupEnd("Page Information");
+
+	console.group("DOM Information");
+	    console.group("DOM - Window Object");
+		    console.log(window);
+	    console.groupEnd("DOM - Window object");
+
+	    console.group("DOM - Document Object");
+		    console.log(document);
+	    console.groupEnd("DOM - Document Object");
+
+	    console.group("DOM - Navigator");
+		    console.log(navigator);
+	    console.groupEnd("DOM - Navigator");
+	console.groupEnd("DOM Information");
+
+    console.groupEnd("DebugInformation");
+
+    </script>
 </html>
