@@ -3,7 +3,7 @@
   {
     "mode": "in-memory",
     "clusterSize": 1,
-    "host": "nixtop",
+    "host": "devNode.wsad.io",
     "balancer": "round-robin"
   },
 "OraActor":
