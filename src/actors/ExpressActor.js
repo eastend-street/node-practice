@@ -1,26 +1,37 @@
-
-
-
-
+// Express actor wraps around express and lets us manage it in an actor type fashion. 
+// See: https://www.npmjs.com/package/express
 class ExpressActor
 	{
 	initialize(selfActor)
 		{
 		this.self = selfActor;
-		let express = require('express');
-		this.server = express();
-
-		this.server.use(express.static('public'))
-		this.server.listen(3000, function () 
-					{
-					console.log("Example app listening at http://%s:%s")
-					})
-
+		this.express = require('express');
+		this.server = this.express();
+		this.port = 3000;
+	
+		this.setupExpressRoutes();
+		this.startServer(this.port);
 		}
+
+	returnData()
+		{
+		return {
+			port: this.port
+			}
+		}
+
+	setupExpressRoutes()
+		{
+		this.server.use(this.express.static('public'))
+		}
+
 	startServer(port)
 		{
-		console.log('test')
-		this.server.listen(port)
+		this.server.listen(this.port, function ()
+                                        {
+                                        console.log("Example app listening at http://yourdomain:" + this.port)
+                                        })
+
 		}
 	stopServer()
 		{
@@ -29,7 +40,7 @@ class ExpressActor
 
 	update(data)
 		{
-		//console.log(data)
+		console.log(data)
 		}
 
 	}

@@ -1,7 +1,6 @@
-
-
-
-
+// Axel is a nodejs graphics library for drawing graphics to our console with ASCII characters
+// See: https://www.npmjs.com/package/axel
+// This actor wraps around Axel's functionality
 class AxelActor
 	{
 	initialize(selfActor)
@@ -14,11 +13,16 @@ class AxelActor
 		this.ctx.cursor.restore();
 		}
 
+	returnData()
+		{
+		return {}
+		}
+
 	update(axelData)
 		{
 		if (axelData.clear === true)
 			{
-			this.ctx.clear();
+//			this.ctx.clear();
 			}
 		// Background to yellow, foreground to black
 		this.ctx.bg(255,255,0);

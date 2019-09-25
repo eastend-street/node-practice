@@ -1,7 +1,6 @@
 'use strict';
 
 
-
 class Core
 	{
 	constructor()
@@ -41,6 +40,6 @@ class Core
 		appActor.send('updateApplication');
 		}
 	}
-	
+
 
 const core = new Core();
