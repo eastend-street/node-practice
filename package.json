@@ -21,7 +21,7 @@
   "author": "Ivan Malone",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.6.3",
+    "async": "^2.6.4",
     "axel": "0.0.3",
     "bluebird": "^3.5.5",
     "brain.js": "^1.6.1",
